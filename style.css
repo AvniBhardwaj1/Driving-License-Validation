@@ -1,0 +1,434 @@
+body {
+    margin: 0;
+    background-color: #f5f6fa;
+}
+
+::placeholder {
+    color: #bbbbbb;
+}
+
+.container {
+    margin: auto;
+    width: 60%;
+}
+
+.head {
+    color: #92817a;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 60px;
+    text-align: center;
+}
+
+                         /* Personal Information */
+
+.personal{
+    text-align: center;
+    font-size: 25px;
+    color: #747d8c;
+}
+
+.id {
+    padding-bottom: 20px;
+}
+.state-selection {
+    font-size: 25px;
+    padding-bottom: 12px;
+    display: block;
+}
+#state {
+    width: 300px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    font-size: 16px; /* Adjust the font size as needed */
+}
+#applicationType {
+    width: 300px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    font-size: 16px;
+}
+#vehicleClass {
+    width: 300px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    font-size: 16px;
+}
+
+.nid {
+    font-size: 25px;
+    padding-bottom: 12px;
+    display: block;
+}
+
+.input-nid {
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+}
+
+.date {
+    font-size: 25px;
+    padding-bottom: 12px;
+    display: block;
+}
+
+.birth {
+    padding: 10px;
+    font-size: 1.5em;
+    width: 97%;
+    text-transform: uppercase;
+}
+
+.name1 {
+    font-size: 25px;
+    padding-bottom: 12px;
+    display: block;
+    margin-bottom: 0;
+}
+
+.name {
+    overflow: hidden;
+}
+
+.your-title1 {
+    padding: 10px;
+    font-size: 1em;
+    width: 31%;
+    margin-right: 8px;
+    float: left;
+}
+
+.first-name {
+    padding: 10px;
+    font-size: 1em;
+    width: 31%;
+    overflow: hidden;
+    float: left;
+}
+
+.last-name {
+    padding: 10px;
+    font-size: 1em;
+    width: 31%;
+    margin-left: 7.8px;
+    float: left;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.father {
+    font-size: 25px;
+    padding-bottom: 12px;
+    padding-top: 5px;
+    display: block;
+    margin-bottom: 0;
+}
+
+.father-name {
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.mother {
+    font-size: 25px;
+    padding-bottom: 12px;
+    padding-top: 5px;
+    display: block;
+    margin-bottom: 0;
+}
+
+.mother-name {
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.gender {
+    font-size: 25px;
+    padding-bottom: 12px;
+    padding-top: 5px;
+    display: block;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.male {
+    font-size: 18px;
+    padding-bottom: 4px;
+}
+
+.female {
+    font-size: 18px;
+}
+.occupation1 {
+    font-size: 25px;
+    padding-top: 5px;
+    display: block;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.occupation2 {
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.mobile-no{
+    margin: 10px 0 10px 0;
+    font-size: 25px;
+}
+
+.mobile1{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.email-n{
+    margin-bottom: 10px;
+}
+
+.email-name{
+    font-size: 25px;
+}
+
+.email1{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.p-address {
+    font-size: 25px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+
+.address-l1{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+}
+
+.address-l2{
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.city1{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.union1{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.upzilla-town1{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.zip-code1{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.zilla1{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+.division1{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.same{
+    font-size: 20px;
+    padding-bottom: 15px;
+}
+
+.nationality{
+    margin-bottom: 10px;
+}
+
+.nation{
+    font-size: 25px;
+}
+
+.nationality1{
+    font-size: 25px;
+}
+
+
+                        /** About Licence **/
+.about-licence{
+    text-align: center;
+    color: #747d8c;
+    font-size: 25px;
+}
+
+.permit {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.permit-yes {
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.permit-no {
+    font-size: 20px;
+}
+
+.which-one1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.learner-permit {
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.driving-licence {
+    font-size: 20px;
+}
+
+.l-detail{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.a-type{
+    font-size: 20px;
+    margin: 10px 0 10px 0;
+}
+
+.renewal{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.ftdl{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.replace{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.damaged-licence{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.other{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.other-label{
+    margin-bottom: 10px;
+}
+
+.other-box{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.class-of-vehicle{
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 25px
+}
+
+.three{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.light{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.medium{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.heavy{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.motorcycle{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.other2{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.other-describe{
+    padding: 10px;
+    font-size: 1em;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.other-input-label{
+    margin-bottom: 10px;
+}
+
+                            /** Submit Button **/
+
+.button{
+    margin:auto;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.button1{
+    border-radius: 8px;
+    font-size: 25px;
+    padding: 10px 40px 10px 40px;
+    background-color: #0e918c;
+    color: #fff;
+    border: 2px solid #0e918c;
+    cursor: pointer;
+
+}
+
+.button1:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transition-delay: .15s;
+}
+

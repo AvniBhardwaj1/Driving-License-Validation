@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Data Management Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            max-width: 90%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+        }
+        button.delete {
+            background-color: #f44336;
+            color: white;
+        }
+        button.update {
+            background-color: #4caf50;
+            color: white;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .data-container {
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+        .data-container h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .data-container p {
+            margin: 5px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body ng-controller="DataController">
+    <div class="container">
+        <h1>Data Management Page</h1>
+        
+        <!-- Retrieve Data Form -->
+        <form ng-submit="retrieveData()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" ng-model="searchParams.name" required>
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" ng-model="searchParams.age" required>
+            
+            <label for="nid">National Identification Number (NID):</label>
+            <input type="text" id="nid" ng-model="searchParams.nid" pattern="[0-9]{12}" required>
+            
+            <button type="submit">Retrieve Data</button>
+        </form>
+
+        <!-- Display Retrieved Data -->
+        <div class="data-container" ng-if="retrievedData">
+            <h2>Retrieved Data</h2>
+            <p>Name: {{ retrievedData.name }}</p>
+            <p>Age: {{ retrievedData.age }}</p>
+            <p>NID: {{ retrievedData.nid }}</p>
+
+            <!-- Delete Data Button -->
+            <button class="delete" ng-click="deleteData()">Delete Entry</button>
+
+            <!-- Update Data Form -->
+            <form ng-submit="updateData()">
+                <label for="newPhone">New Phone Number:</label>
+                <input type="text" id="newPhone" ng-model="newData.phone">
+                
+                <button class="update" type="submit">Update Phone Number</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        angular.module('myApp', [])
+            .controller('DataController', function($scope, $http) {
+                $scope.searchParams = {};
+                $scope.retrievedData = null;
+                $scope.newData = {};
+
+                $scope.retrieveData = function() {
+                    $http.get('/retrieve-data', { params: $scope.searchParams })
+                        .then(function(response) {
+                            $scope.retrievedData = response.data;
+                            $scope.newData = angular.copy(response.data);
+                        })
+                        .catch(function(error) {
+                            console.error('Error retrieving data:', error);
+                        });
+                };
+
+                $scope.deleteData = function() {
+                    if (confirm('Are you sure you want to delete this entry?')) {
+                        $http.delete('/delete-data', { params: $scope.searchParams })
+                            .then(function(response) {
+                                console.log('Data deleted successfully:', response.data);
+                                $scope.retrievedData = null;
+                            })
+                            .catch(function(error) {
+                                console.error('Error deleting data:', error);
+                            });
+                    }
+                };
+
+                $scope.updateData = function() {
+                    $http.put('/update-data', $scope.newData)
+                        .then(function(response) {
+                            console.log('Data updated successfully:', response.data);
+                            $scope.retrievedData = response.data;
+                        })
+                        .catch(function(error) {
+                            console.error('Error updating data:', error);
+                        });
+                };
+            });
+    </script>
+</body>
+</html>

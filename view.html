@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Management</title>
+</head>
+<body>
+  <h1>Licence Data</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>National Identification Number</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Father's Name</th>
+        <th>Mother's Name</th>
+        <th>Date Of Birth</th>
+        <th>Gender</th>
+        <th>Marital Status</th>
+        <th>Occupation</th>
+        <th>Mobile Number</th>
+        <th>Email</th>
+        <th>State/UT</th>
+        <th>Nationality</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(entry => { %>
+        <tr>
+          <td><%= entry.NationalIdentificationNumber %></td>
+          <td><%= entry.FirstName %></td>
+          <td><%= entry.LastName %></td>
+          <td><%= entry.FathersName %></td>
+          <td><%= entry.MothersName %></td>
+          <td><%= entry.DateOfBirth %></td>
+          <td><%= entry.Gender %></td>
+          <td><%= entry.MaritalStatus %></td>
+          <td><%= entry.Occupation %></td>
+          <td><%= entry.MobileNumber %></td>
+          <td><%= entry.Email %></td>
+          <td><%= entry.StateUT %></td>
+          <td><%= entry.Nationality %></td>  
+          <td>
+            <form action="/update/<%= entry.id %>" method="POST">
+              <button type="submit">Update Entry</button>
+            </form>
+          </td>
+          <td>
+            <form action="/delete/<%= entry.id %>" method="POST">
+              <button type="submit">Delete Entry</button>
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <!-- Additional tables for Permanent Address, Present Address, Health Information, etc. -->
+  
+</body>
+</html>

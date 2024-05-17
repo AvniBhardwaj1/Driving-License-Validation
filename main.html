@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dlApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Apply for Driving Licence</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-controller="FormController">
+    <div class="container">
+        <div class="application">
+            <p class="dlaf">
+                <h1 class="head">Application Form for Driving Licence</h1>
+            </p>
+        </div>
+<div class="personal">
+    <h1 class="personal-information">
+        Personal Information
+    </h1>
+</div>
+<div class="state-selection">
+    <label for="state">Please select the State/UT from where the service is to be taken:</label>
+    <select id="state" name="state" ng-model="personalInfo.state">
+        <option value="">Select State/UT</option>
+        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+    <option value="Daman and Diu">Daman and Diu</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Ladakh">Ladakh</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Puducherry">Puducherry</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Puducherry">Puducherry</option>
+    </select>
+</div>        
+<div class="id">
+    <label class="nid" for="nid">
+        National Identification Number (NID - 12 digit):
+        </label>
+        <input class="input-nid" type="text" id="nid" placeholder="Type your NID number" ng-model="personalInfo.nid" ng-pattern="/^\d{12}$/" required>
+        <span ng-show="submitted && registrationForm.nid.$error.required">NID is required.</span>
+        <span ng-show="submitted && registrationForm.nid.$error.pattern">NID should be exactly 12 digits and contain only numbers.</span>
+    </div>
+<div class="dob">
+    <label class="date" for="date-of-birth">
+        Date of Birth:
+    </label>
+    <input type="date" class="birth" id="date-of-birth" ng-model="personalInfo.dob" ng-change="checkAge()" required>
+    <span ng-show="submitted && registrationForm.dateOfBirth.$error.required">Date of Birth is required.</span>
+    <span ng-show="submitted && registrationForm.dateOfBirth.$error.validDate">Invalid date format.</span>
+    <span ng-show="submitted && registrationForm.dateOfBirth.$error.minAge">You must be at least 18 years old.</span>
+    <p id="age-message"></p>
+</div>
+<div class="name">
+    <p class="name1">Name:</p>
+    <div class="your-title">
+        <select class="your-title1" id="title" ng-model="personalInfo.title" required>
+            <option value="" disabled selected>Title</option>
+            <option value="Ms">Ms</option>
+            <option value="Miss">Miss</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Mr">Mr</option>
+        </select>
+        <span ng-show="submitted && !personalInfo.title">Title is required.</span>
+
+<div class="f-name">
+    <input type="text" class="first-name" placeholder="First name" ng-model="personalInfo.firstName" required>
+    <span ng-show="submitted && registrationForm.firstName.$error.required">First name is required.</span>
+</div>
+<div class="l-name">
+    <input type="text" class="last-name" placeholder="Last name" ng-model="personalInfo.lastName" required>
+    <span ng-show="submitted && registrationForm.lastName.$error.required">Last name is required.</span>
+</div>
+<br><br><br><br><br>
+<div class="f-name">
+    <label class="father" for="Father">
+        Father's Name:
+    </label>
+    <input type="text" id="Father" class="father-name" placeholder="Type your father's name" ng-model="personalInfo.fatherName" required>
+    <span ng-show="submitted && !personalInfo.fatherName">Father's name is required.</span>
+</div>
+
+<div class="m-name">
+    <label for="Mother" class="mother">
+        Mother's Name:
+    </label>
+    <input type="text" id="Mother" class="mother-name" placeholder="Type your mother's name" ng-model="personalInfo.motherName" required>
+    <span ng-show="submitted && !personalInfo.motherName">Mother's name is required.</span>
+</div>
+
+<div class="gen">
+    <p class="gender">Gender</p>
+    <div class="male">
+        <input type="radio" id="male" name="gender" value="Male" ng-model="personalInfo.gender" required>
+        <label for="male">Male</label><br>
+    </div>
+    <div class="female">
+        <input type="radio" id="female" name="gender" value="Female" ng-model="personalInfo.gender" required>
+        <label for="female">Female</label>
+    </div>
+    <span ng-show="submitted && !personalInfo.gender">Please select your gender.</span>
+</div>
+
+<div class="occupation">
+    <label for="occupation" class="occupation1">
+        Occupation:
+    </label><br>
+    <input class="occupation2" id="occupation" type="text" placeholder="Type your occupation" ng-model="personalInfo.occupation" required>
+    <span ng-show="submitted && !personalInfo.occupation">Occupation is required.</span>
+</div>
+
+<div class="mobile">
+    <p class="mobile-no">
+        Mobile No:
+    </p>
+    <input class="mobile1" type="text" name="mobile-number" placeholder="Mobile number" value="+880" ng-model="personalInfo.mobileNumber" required>
+    <span ng-show="submitted && !personalInfo.mobileNumber">Mobile number is required.</span>
+</div>
+
+<div class="email">
+    <div class="email-n">
+        <label for="email">EMAIL:</label>
+    </div>
+    <input type="email" id="email" ng-model="email" required>
+    <span ng-show="submitted && registrationForm.email.$error.required">Email is required.</span>
+    <span ng-show="submitted && registrationForm.email.$error.email">Invalid email format.</span><br><br>
+</div>
+
+<!-- Address -->
+
+<div class="address-d">
+    <div class="per-street">
+        <p class="p-address">Permanent address</p>
+        <div class="addressl1">
+            <input class="address-l1" type="text" placeholder="Street Address" ng-model="personalInfo.permanentAddress.street1">
+        </div>
+        <div class="addressl2">
+            <input class="address-l2" type="text" placeholder="Street Address Line 2" ng-model="personalInfo.permanentAddress.street2">
+        </div>
+        <div class="city">
+            <input class="city1" type="text" placeholder="village/City" ng-model="personalInfo.permanentAddress.city">
+        </div>
+        <div class="union">
+            <input class="union1" type="text" placeholder="Union" ng-model="personalInfo.permanentAddress.union">
+        </div>
+        <div class="upzilla-town">
+            <input class="upzilla-town1" type="text" placeholder="Upzila/Town" ng-model="personalInfo.permanentAddress.upzillaTown">
+        </div>
+        <div class="zip-code">
+            <input class="zip-code1" type="text" placeholder="Postal/Zip Code" ng-model="personalInfo.permanentAddress.zipCode">
+        </div>
+        <div class="division">
+            <input class="division1" type="text" placeholder="Divison" ng-model="personalInfo.permanentAddress.division">
+        </div>
+    </div>
+    <div class="pre-street">
+        <p class="p-address">Present address</p>
+        <div class="same">
+            <input type="checkbox" id="same" ng-model="sameAsPermanent">
+            <label class="same" for="same">Same as permanent address</label>
+        </div>
+        <div class="addressFields" ng-show="!sameAsPermanent">
+            <div class="addressl1">
+                <input class="address-l1" type="text" placeholder="Street Address" ng-model="personalInfo.presentAddress.street1">
+            </div>
+            <div class="addressl2">
+                <input class="address-l2" type="text" placeholder="Street Address Line 2" ng-model="personalInfo.presentAddress.street2">
+            </div>
+            <div class="city">
+                <input class="city1" type="text" placeholder="village/City" ng-model="personalInfo.presentAddress.city">
+            </div>
+            <div class="union">
+                <input class="union1" type="text" placeholder="Union" ng-model="personalInfo.presentAddress.union">
+            </div>
+            <div class="upzilla-town">
+                <input class="upzilla-town1" type="text" placeholder="Upzila/Town" ng-model="personalInfo.presentAddress.upzillaTown">
+            </div>
+            <div class="zip-code">
+                <input class="zip-code1" type="text" placeholder="Postal/Zip Code" ng-model="personalInfo.presentAddress.zipCode">
+            </div>
+            <div class="zilla">
+                <input class="zilla1" type="text" placeholder="Zilla" ng-model="personalInfo.presentAddress.zilla">
+            </div>
+            <div class="divition">
+                <input class="division1" type="text" placeholder="Divition" ng-model="personalInfo.presentAddress.division">
+            </div>
+        </div>
+    </div>
+    <div class="nationality">
+        <label for="nationality" class="nation">Nationality:</label>
+        <select id="nationality" class="nationality-dropdown" ng-model="personalInfo.nationality" ng-change="toggleResidency()">
+            <option value="Indian">Indian</option>
+            <option value="NonIndianResident">Non Indian Resident</option>
+            <option value="CAAResident">CAA Resident</option>
+            <option value="GreenCard">Green Card</option>
+            <option value="Foreigner">Foreigner</option>
+        </select>
+        <span ng-show="submitted && registrationForm.nationality.$error.required">Nationality is required.</span>
+    </div>
+</div>
+<div class="about-licence">
+    <h1 class="about-l">
+        Driving-Licence Information
+    </h1>
+</div>
+
+<div class="application-type">
+    <p class="l-detail">Licence Details</p>
+    <p class="a-type">Application type</p>
+    <select id="applicationType" name="applicationType" ng-model="selectedApplicationType">
+        <option value="" disabled>Select application type</option>
+        <option value="renewal">Renewal of driving licence</option>
+        <option value="firstTime">First time driving licence</option>
+        <option value="replaceStolen">Replace a lost or stolen licence</option>
+        <option value="damagedLicence">Replace a damaged licence</option>
+        <option value="other">Other</option>
+    </select>
+    <input class="other-box" type="text" id="other" data-size="full" ng-model="otherDetails" ng-show="selectedApplicationType === 'other'">
+    <span ng-show="submitted && !selectedApplicationType">Please select an application type.</span>
+</div>
+
+<div class="vehicle">
+    <p class="class-of-vehicle">Class of vehicle:</p>
+    <div class="select-class">
+        <select id="vehicleClass" name="vehicleClass" ng-model="selectedVehicleClass" ng-options="option.value as option.label for option in vehicleOptions">
+            <option value="" disabled>Select vehicle class</option>
+        </select>
+        <span ng-show="submitted && !selectedVehicleClass">Please select a vehicle class.</span>
+    </div>
+    <br>
+</div>
+    
+</div>
+    <a href="#" ng-click="submitForm()">
+        <input type="button" class="button1" value="Submit" ng-disabled="!licenceHeld" ng-click="showAlert()">
+    </a>
+    
+    </div>
+</div>
+<script src="formValidation.js"></script>
+</body>
+
+</html>
